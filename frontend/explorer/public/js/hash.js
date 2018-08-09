@@ -694,7 +694,7 @@ function appendUnlockHashTransactionElements(domParent, hash, explorerHash, addr
 				for (var j = 0; j < explorerHash.transactions[i].rawtransaction.data.coininputs.length; j++) {
 					// Iterate through the list of known
 					// scoids to see if any of them match
-					// the output used of the current siacoin
+					// the used output of the current siacoin
 					// input.
 					for (var k = 0; k < scoids.length; k++) {
 						if (explorerHash.transactions[i].rawtransaction.data.coininputs[j].parentid == scoids[k]) {
