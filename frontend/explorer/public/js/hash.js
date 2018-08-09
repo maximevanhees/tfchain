@@ -52,7 +52,7 @@ function appendV0Transaction(infoBody, explorerTransaction, confirmed) {
 		for (var i = 0; i < explorerTransaction.rawtransaction.data.coininputs.length; i++) {
 			var table = createStatsTable();
 			appendStatHeader(table, 'General');
-			var doms = appendStat(table, 'Parent ID', '');
+			var doms = appendStat(table, 'Used Output', '');
 			linkHash(doms[2], explorerTransaction.rawtransaction.data.coininputs[i].parentid);
 			doms = appendStat(table, 'Address', '');
 			var address = explorerTransaction.coininputoutputs[i].condition.data.unlockhash;
@@ -93,7 +93,7 @@ function appendV0Transaction(infoBody, explorerTransaction, confirmed) {
 		for (var i = 0; i < explorerTransaction.rawtransaction.data.blockstakeinputs.length; i++) {
 			var table = createStatsTable();
 			appendStatHeader(table, 'General');
-			var doms = appendStat(table, 'Parent ID', '');
+			var doms = appendStat(table, 'Used Output', '');
 			linkHash(doms[2], explorerTransaction.rawtransaction.data.blockstakeinputs[i].parentid);
 			doms = appendStat(table, 'Address', '');
 			linkHash(doms[2], explorerTransaction.blockstakeinputoutputs[i].condition.data.unlockhash);
@@ -283,7 +283,7 @@ function addV1T1Input(infoBody, explorerTransaction, i, type) {
 	var table = createStatsTable();
 	appendStatHeader(table, 'General');
 
-	var doms = appendStat(table, 'Parent ID', '');
+	var doms = appendStat(table, 'Used Output', '');
 	linkHash(doms[2], explorerTransaction.rawtransaction.data[inputspecifier][i].parentid);
 	doms = appendStat(table, 'Address', '');
 	var unlockhash = explorerTransaction[inputoutputspecifier][i].unlockhash;
@@ -314,7 +314,7 @@ function addV1T2Input(infoBody, explorerTransaction, i, type) {
 	var table = createStatsTable();
 	appendStatHeader(table, 'General');
 
-	var doms = appendStat(table, 'Parent ID', '');
+	var doms = appendStat(table, 'Used Output', '');
 	linkHash(doms[2], explorerTransaction.rawtransaction.data[inputspecifier][i].parentid);
 	doms = appendStat(table, 'Address', '');
 	var secret = explorerTransaction.rawtransaction.data[inputspecifier][i].fulfillment.data.secret;
@@ -346,7 +346,7 @@ function addV1T3Input(infoBody, explorerTransaction, i, type) {
 	var table = createStatsTable();
 	appendStatHeader(table, 'General');
 
-	var doms = appendStat(table, 'Parent ID', '');
+	var doms = appendStat(table, 'Used Output', '');
 	linkHash(doms[2], explorerTransaction.rawtransaction.data[inputspecifier][i].parentid);
 
 	
@@ -694,7 +694,7 @@ function appendUnlockHashTransactionElements(domParent, hash, explorerHash, addr
 				for (var j = 0; j < explorerHash.transactions[i].rawtransaction.data.coininputs.length; j++) {
 					// Iterate through the list of known
 					// scoids to see if any of them match
-					// the parent id of the current siacoin
+					// the output used of the current siacoin
 					// input.
 					for (var k = 0; k < scoids.length; k++) {
 						if (explorerHash.transactions[i].rawtransaction.data.coininputs[j].parentid == scoids[k]) {
@@ -844,7 +844,7 @@ function appendUnlockHashTransactionElements(domParent, hash, explorerHash, addr
 				for (var j = 0; j < explorerHash.transactions[i].rawtransaction.data.blockstakeinputs.length; j++) {
 					// Iterate through the list of known
 					// sfoids to see if any of them match
-					// the parent id of the current blockstake
+					// the used output of the current blockstake
 					// input.
 					for (var k = 0; k < sfoids.length; k++) {
 						if (explorerHash.transactions[i].rawtransaction.data.blockstakeinputs[j].parentid == sfoids[k]) {
